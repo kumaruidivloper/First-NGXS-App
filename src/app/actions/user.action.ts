@@ -27,6 +27,6 @@ export class DeleteUser {
 export class SetSelectedUser {
     static readonly type = '[USER] Set';
 
-    constructor(public payload: null) {
+    constructor(public payload: User) {
     }
 }
