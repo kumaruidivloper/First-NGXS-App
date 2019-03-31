@@ -11,7 +11,7 @@ import {DeleteUser, GetUsers, SetSelectedUser} from './../actions/user.action';
     styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-    @Select(UserState.getUserList) todos: Observable<User[]>;
+    @Select(UserState.getUserList) users: Observable<User[]>;
 
     constructor(private store: Store) {
     }
@@ -20,11 +20,12 @@ export class ListComponent implements OnInit {
         this.store.dispatch(new GetUsers());
     }
 
-    deleteTodo(id: number) {
+    deleteUser(id: number) {
         this.store.dispatch(new DeleteUser(id));
     }
 
-    editTodo(payload: User) {
+    editUser(payload: User) {
+        console.log(payload);
         this.store.dispatch(new SetSelectedUser(payload));
     }
 

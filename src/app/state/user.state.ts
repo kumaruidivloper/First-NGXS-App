@@ -32,7 +32,7 @@ export class UserState {
     }
 
     @Action(GetUsers)
-    getTodos({getState, setState}: StateContext<UserStateModel>) {
+    geUsers({getState, setState}: StateContext<UserStateModel>) {
         return this.userService.fetchUsers().pipe(tap((result) => {
             const state = getState();
             setState({
@@ -43,7 +43,7 @@ export class UserState {
     }
 
     @Action(AddUser)
-    addTodo({getState, patchState}: StateContext<UserStateModel>, {payload}: AddUser) {
+    addUser({getState, patchState}: StateContext<UserStateModel>, {payload}: AddUser) {
         return this.userService.addUser(payload).pipe(tap((result) => {
             const state = getState();
             patchState({
@@ -53,7 +53,7 @@ export class UserState {
     }
 
     @Action(UpdateUser)
-    updateTodo({getState, setState}: StateContext<UserStateModel>, {payload, id}: UpdateUser) {
+    updateUser({getState, setState}: StateContext<UserStateModel>, {payload, id}: UpdateUser) {
         return this.userService.updateUser(payload, id).pipe(tap((result) => {
             const state = getState();
             const userList = [...state.users];
@@ -68,7 +68,7 @@ export class UserState {
 
 
     @Action(DeleteUser)
-    deleteTodo({getState, setState}: StateContext<UserStateModel>, {id}: DeleteUser) {
+    deleteUser({getState, setState}: StateContext<UserStateModel>, {id}: DeleteUser) {
         return this.userService.deleteUser(id).pipe(tap(() => {
             const state = getState();
             const filteredArray = state.users.filter(item => item.id !== id);
@@ -80,8 +80,9 @@ export class UserState {
     }
 
     @Action(SetSelectedUser)
-    setSelectedTodoId({getState, setState}: StateContext<UserStateModel>, {payload}: SetSelectedUser) {
+    setSelectedUserId({getState, setState}: StateContext<UserStateModel>, {payload}: SetSelectedUser) {
         const state = getState();
+        console.log(state);
         setState({
             ...state,
             selectedUser: payload

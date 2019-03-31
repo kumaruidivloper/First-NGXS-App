@@ -13,51 +13,51 @@ import {User} from './../models/user.model';
     styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
-    @Select(UserState.getSelectedUser) selectedTodo: Observable<User>;
-    todoForm: FormGroup;
-    editTodo = false;
+    @Select(UserState.getSelectedUser) selectedUser: Observable<User>;
+    userForm: FormGroup;
+    editUser = false;
 
     constructor(private fb: FormBuilder, private store: Store, private route: ActivatedRoute, private router: Router) {
         this.createForm();
     }
 
     ngOnInit() {
-        this.selectedTodo.subscribe(todo => {
-            if (todo) {
-                this.todoForm.patchValue({
-                    id: todo.id,
-                    userId: todo.userId,
-                    title: todo.title
+        this.selectedUser.subscribe(user => {
+            if (user) {
+                this.userForm.patchValue({
+                    id: user.id,
+                    userId: user.userId,
+                    name: user.name
                 });
-                this.editTodo = true;
+                this.editUser = true;
             } else {
-                this.editTodo = false;
+                this.editUser = false;
             }
         });
     }
 
     createForm() {
-        this.todoForm = this.fb.group({
+        this.userForm = this.fb.group({
             id: [''],
             userId: ['', Validators.required],
-            title: ['', Validators.required]
+            name: ['', Validators.required]
         });
     }
 
     onSubmit() {
-        if (this.editTodo) {
-            this.store.dispatch(new UpdateUser(this.todoForm.value, this.todoForm.value.id)).subscribe(() => {
+        if (this.editUser) {
+            this.store.dispatch(new UpdateUser(this.userForm.value, this.userForm.value.id)).subscribe(() => {
                 this.clearForm();
             });
         } else {
-            this.store.dispatch(new AddUser(this.todoForm.value)).subscribe(() => {
+            this.store.dispatch(new AddUser(this.userForm.value)).subscribe(() => {
                 this.clearForm();
             });
         }
     }
 
     clearForm() {
-        this.todoForm.reset();
+       this.userForm.reset();
         this.store.dispatch(new SetSelectedUser(null));
     }
 }
