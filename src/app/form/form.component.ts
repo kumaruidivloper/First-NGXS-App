@@ -60,10 +60,4 @@ export class FormComponent implements OnInit {
        this.userForm.reset();
         this.store.dispatch(new SetSelectedUser(null));
     }
-
-    // resetForm() {
-    //     console.log("Hello");
-    //     this.store.dispatch(new SetSelectedUser(null));
-    //     this.userForm.reset();
-    // }
 }
