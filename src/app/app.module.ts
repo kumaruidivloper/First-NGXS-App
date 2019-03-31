@@ -21,7 +21,7 @@ import { UserState } from './state/user.state';
         BrowserModule,
         NgxsModule.forRoot(
           [
-            UserState
+            UserState 
           ]
         ),
         NgxsReduxDevtoolsPluginModule.forRoot(),

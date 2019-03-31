@@ -12,6 +12,7 @@ import {DeleteUser, GetUsers, SetSelectedUser} from './../actions/user.action';
 })
 export class ListComponent implements OnInit {
     @Select(UserState.getUserList) users: Observable<User[]>;
+    public isDisable: boolean = false;
 
     constructor(private store: Store) {
     }
@@ -26,6 +27,7 @@ export class ListComponent implements OnInit {
 
     editUser(payload: User) {
         console.log(payload);
+        // this.isDisable = true;
         this.store.dispatch(new SetSelectedUser(payload));
     }
 

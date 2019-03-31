@@ -49,7 +49,7 @@ export class FormComponent implements OnInit {
             this.store.dispatch(new UpdateUser(this.userForm.value, this.userForm.value.id)).subscribe(() => {
                 this.clearForm();
             });
-        } else {
+        } else if(this.userForm.value.userId != null){
             this.store.dispatch(new AddUser(this.userForm.value)).subscribe(() => {
                 this.clearForm();
             });
@@ -60,4 +60,10 @@ export class FormComponent implements OnInit {
        this.userForm.reset();
         this.store.dispatch(new SetSelectedUser(null));
     }
+
+    // resetForm() {
+    //     console.log("Hello");
+    //     this.store.dispatch(new SetSelectedUser(null));
+    //     this.userForm.reset();
+    // }
 }

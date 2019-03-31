@@ -32,7 +32,7 @@ export class UserState {
     }
 
     @Action(GetUsers)
-    geUsers({getState, setState}: StateContext<UserStateModel>) {
+    getUsers({getState, setState}: StateContext<UserStateModel>) {
         return this.userService.fetchUsers().pipe(tap((result) => {
             const state = getState();
             setState({
@@ -82,7 +82,6 @@ export class UserState {
     @Action(SetSelectedUser)
     setSelectedUserId({getState, setState}: StateContext<UserStateModel>, {payload}: SetSelectedUser) {
         const state = getState();
-        console.log(state);
         setState({
             ...state,
             selectedUser: payload
