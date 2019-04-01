@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input, OnChanges} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Select, Store} from '@ngxs/store';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -12,16 +12,25 @@ import {User} from './../models/user.model';
     templateUrl: './form.component.html',
     styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit, OnChanges {
     @Select(UserState.getSelectedUser) selectedUser: Observable<User>;
     userForm: FormGroup;
     editUser = false;
+    @Input() event: Event;
 
     constructor(private fb: FormBuilder, private store: Store, private route: ActivatedRoute, private router: Router) {
         this.createForm();
     }
 
+    ngOnChanges() {
+        if (event) {
+            this.userForm.reset();
+            this.editUser = false;
+        }
+    }
+
     ngOnInit() {
+        console.log('Hello')
         this.selectedUser.subscribe(user => {
             if (user) {
                 this.userForm.patchValue({

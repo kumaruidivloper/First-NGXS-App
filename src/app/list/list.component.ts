@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { UserState } from './../state/user.state';
 import {Select, Store} from '@ngxs/store';
 import { User } from './../models/user.model'
 import {Observable} from 'rxjs';
-import {DeleteUser, GetUsers, SetSelectedUser} from './../actions/user.action';
+import {DeleteUser, GetUsers, SetSelectedUser, AddUser} from './../actions/user.action';
 
 @Component({
     selector: 'app-list',
@@ -13,6 +13,7 @@ import {DeleteUser, GetUsers, SetSelectedUser} from './../actions/user.action';
 export class ListComponent implements OnInit {
     @Select(UserState.getUserList) users: Observable<User[]>;
     public isDisable: boolean = false;
+    @Output() eventClicked = new EventEmitter<Boolean>();
 
     constructor(private store: Store) {
     }
@@ -22,12 +23,11 @@ export class ListComponent implements OnInit {
     }
 
     deleteUser(id: number) {
+        this.eventClicked.emit(true);
         this.store.dispatch(new DeleteUser(id));
     }
 
     editUser(payload: User) {
-        console.log(payload);
-        // this.isDisable = true;
         this.store.dispatch(new SetSelectedUser(payload));
     }
 
