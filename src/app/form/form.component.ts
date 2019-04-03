@@ -6,6 +6,7 @@ import { UserState } from './../state/user.state';
 import {AddUser, SetSelectedUser, UpdateUser} from './../actions/user.action';
 import {Observable} from 'rxjs';
 import {User} from './../models/user.model';
+import { UserService } from './../user.service';
 
 @Component({
     selector: 'app-form',
@@ -17,8 +18,14 @@ export class FormComponent implements OnInit, OnChanges {
     userForm: FormGroup;
     editUser = false;
     @Input() event: Event;
+    public clickedEvent: Event;
 
-    constructor(private fb: FormBuilder, private store: Store, private route: ActivatedRoute, private router: Router) {
+    constructor(
+        private fb: FormBuilder, 
+        private store: Store, 
+        private route: ActivatedRoute,
+        private userService: UserService, 
+        private router: Router) {
         this.createForm();
     }
 
@@ -30,7 +37,8 @@ export class FormComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
-        console.log('Hello')
+        const id = +this.route.snapshot.paramMap.get('id');
+        this.getUser(id);
         this.selectedUser.subscribe(user => {
             if (user) {
                 this.userForm.patchValue({
@@ -43,6 +51,16 @@ export class FormComponent implements OnInit, OnChanges {
                 this.editUser = false;
             }
         });
+    }
+
+    getUser(id:number) {
+        this.userService.selectedUsers(id).subscribe(selectedUser => {
+            this.userForm.patchValue({
+                id: selectedUser.id,
+                userId: selectedUser.userId,
+                name: selectedUser.name
+            })
+        })
     }
 
     createForm() {

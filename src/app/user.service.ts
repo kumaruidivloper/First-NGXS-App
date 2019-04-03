@@ -16,6 +16,10 @@ export class UserService {
       return this.http.get<User[]>('http://localhost:3000/sampleProducts');
   }
 
+  selectedUsers(id: number) {
+    return this.http.get<User[]>(`http://localhost:3000/sampleProducts/${id}`);
+}
+
   deleteUser(id: number) {
       return this.http.delete(`http://localhost:3000/sampleProducts/${id}`);
   }

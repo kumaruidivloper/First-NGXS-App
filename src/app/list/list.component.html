@@ -5,8 +5,10 @@
         <tr>
           <th>User Id</th>
           <th>User Name</th>
+          <th>Details</th>
           <th>Edit</th>
           <th>Delete</th>
+          <th>Add User</th>
         </tr>
       </thead>
       <tbody>
@@ -14,10 +16,16 @@
           <td>{{ user.userId }}</td>
           <td>{{ user.name }}</td>
           <td>
-            <button class="btn btn-primary" (click)="editUser(user)">Edit</button>
+            <button class="btn btn-primary" (click)="userDetail(user)" [routerLink]="['/user', user.id]">Detail</button>
+          </td>
+          <td>
+            <button class="btn btn-primary" (click)="editUser(user)" [routerLink]="['/user', user.id, 'edit']">Edit</button>
           </td>
           <td>
             <button class="btn btn-primary" (click)="deleteUser(user.id)">Delete</button>
+          </td>
+          <td>
+              <button class="btn btn-primary" [routerLink]="['/adduser']">Add User</button>
           </td>
         </tr>
       </tbody>
