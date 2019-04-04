@@ -25,7 +25,7 @@
             <button class="btn btn-primary" (click)="deleteUser(user.id)">Delete</button>
           </td>
           <td>
-              <button class="btn btn-primary" [routerLink]="['/adduser']">Add User</button>
+              <button class="btn btn-primary" (click)="addUser()" [routerLink]="['/adduser']">Add User</button>
           </td>
         </tr>
       </tbody>

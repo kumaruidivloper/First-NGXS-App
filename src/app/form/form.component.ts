@@ -18,6 +18,7 @@ export class FormComponent implements OnInit, OnChanges {
     userForm: FormGroup;
     editUser = false;
     @Input() event: Event;
+    @Input() event1: Event;
     public clickedEvent: Event;
 
     constructor(
@@ -37,8 +38,10 @@ export class FormComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
+        if (this.event1) {
         const id = +this.route.snapshot.paramMap.get('id');
         this.getUser(id);
+        }
         this.selectedUser.subscribe(user => {
             if (user) {
                 this.userForm.patchValue({
@@ -75,10 +78,12 @@ export class FormComponent implements OnInit, OnChanges {
         if (this.editUser) {
             this.store.dispatch(new UpdateUser(this.userForm.value, this.userForm.value.id)).subscribe(() => {
                 this.clearForm();
+                this.router.navigate(['/users']);
             });
         } else if(this.userForm.value.userId != null){
             this.store.dispatch(new AddUser(this.userForm.value)).subscribe(() => {
                 this.clearForm();
+                this.router.navigate(['/users']);
             });
         }
     }

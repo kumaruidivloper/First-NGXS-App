@@ -36,4 +36,8 @@ export class ListComponent implements OnInit {
         this.store.dispatch(new SetSelectedUser(payload));
     }
 
+    addUser() {
+        this.eventClicked.emit(true);
+    }
+
 }
