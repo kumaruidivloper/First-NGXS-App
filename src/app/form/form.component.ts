@@ -38,7 +38,8 @@ export class FormComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
-        if (this.event1) {
+        if (!this.event1) {
+            console.log("hello")
         const id = +this.route.snapshot.paramMap.get('id');
         this.getUser(id);
         }
@@ -58,6 +59,7 @@ export class FormComponent implements OnInit, OnChanges {
 
     getUser(id:number) {
         this.userService.selectedUsers(id).subscribe(selectedUser => {
+            console.log(selectedUser);
             this.userForm.patchValue({
                 id: selectedUser.id,
                 userId: selectedUser.userId,

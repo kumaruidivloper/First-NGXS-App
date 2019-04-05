@@ -6,21 +6,22 @@ import {AppComponent} from './app.component';
 import {NgxsModule} from '@ngxs/store';
 import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
 import {NgxsLoggerPluginModule} from '@ngxs/logger-plugin';
-import { ListComponent } from './list/list.component';
-import { FormComponent } from './form/form.component';
+// import { ListComponent } from './list/list.component';
+// import { FormComponent } from './form/form.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import { UserState } from './state/user.state';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { DetailComponent } from './detail/detail.component';
+// import { DetailComponent } from './detail/detail.component';
+// import { ListModule } from './list/list.module';
 
 @NgModule({
     declarations: [
         AppComponent,
-        ListComponent,
-        FormComponent,
-        WelcomeComponent,
-        DetailComponent
+        // ListComponent,
+        // FormComponent,
+         WelcomeComponent
+        // DetailComponent
     ],
     imports: [
         BrowserModule,
@@ -35,7 +36,8 @@ import { DetailComponent } from './detail/detail.component';
         AppRoutingModule,
         ReactiveFormsModule,
         HttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
+        // ListModule
     ],
     providers: [],
     bootstrap: [AppComponent]
