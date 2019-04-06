@@ -1,11 +1,11 @@
-import {Component, OnInit, Input, OnChanges} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Select, Store} from '@ngxs/store';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Select, Store } from '@ngxs/store';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserState } from './../state/user.state';
-import {AddUser, SetSelectedUser, UpdateUser} from './../actions/user.action';
-import {Observable} from 'rxjs';
-import {User} from './../models/user.model';
+import { AddUser, UpdateUser } from './../actions/user.action';
+import { Observable } from 'rxjs';
+import { User } from './../models/user.model';
 import { UserService } from './../user.service';
 
 @Component({
@@ -13,13 +13,11 @@ import { UserService } from './../user.service';
     templateUrl: './form.component.html',
     styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit, OnChanges {
+export class FormComponent {
     @Select(UserState.getSelectedUser) selectedUser: Observable<User>;
-    userForm: FormGroup;
-    editUser = false;
-    @Input() event: Event;
-    @Input() event1: Event;
-    public clickedEvent: Event;
+    public userForm: FormGroup;
+    public editUser = false;
+    public isDisable: boolean = false;
 
     constructor(
         private fb: FormBuilder, 
@@ -30,19 +28,11 @@ export class FormComponent implements OnInit, OnChanges {
         this.createForm();
     }
 
-    ngOnChanges() {
-        if (event) {
-            this.userForm.reset();
-            this.editUser = false;
-        }
-    }
-
     ngOnInit() {
-        if (!this.event1) {
-            console.log("hello")
         const id = +this.route.snapshot.paramMap.get('id');
+        if (id > 0) {
+        this.isDisable = true;
         this.getUser(id);
-        }
         this.selectedUser.subscribe(user => {
             if (user) {
                 this.userForm.patchValue({
@@ -55,11 +45,11 @@ export class FormComponent implements OnInit, OnChanges {
                 this.editUser = false;
             }
         });
+        }
     }
 
     getUser(id:number) {
         this.userService.selectedUsers(id).subscribe(selectedUser => {
-            console.log(selectedUser);
             this.userForm.patchValue({
                 id: selectedUser.id,
                 userId: selectedUser.userId,
@@ -80,18 +70,18 @@ export class FormComponent implements OnInit, OnChanges {
         if (this.editUser) {
             this.store.dispatch(new UpdateUser(this.userForm.value, this.userForm.value.id)).subscribe(() => {
                 this.clearForm();
-                this.router.navigate(['/users']);
+                this.router.navigate(['users']);
             });
         } else if(this.userForm.value.userId != null){
+            console.log(this.userForm.value.userId)
             this.store.dispatch(new AddUser(this.userForm.value)).subscribe(() => {
                 this.clearForm();
-                this.router.navigate(['/users']);
+                this.router.navigate(['users']);
             });
         }
     }
 
     clearForm() {
-       this.userForm.reset();
-        this.store.dispatch(new SetSelectedUser(null));
+        this.userForm.reset(); 
     }
 }

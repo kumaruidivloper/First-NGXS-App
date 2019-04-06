@@ -1,49 +1,9 @@
 {
   "sampleProducts": [
     {
-      "id": 2,
-      "userId": 2,
-      "name": "User_002222"
-    },
-    {
-      "id": 4,
-      "userId": 4,
-      "name": "User_0044"
-    },
-    {
-      "id": 6,
-      "userId": 6,
-      "name": "User_00666698910"
-    },
-    {
-      "id": 7,
-      "userId": 8,
-      "name": "User_008"
-    },
-    {
-      "id": 9,
-      "userId": 101,
-      "name": "User_101"
-    },
-    {
-      "id": 10,
-      "userId": 121,
-      "name": "maha2"
-    },
-    {
-      "id": 11,
-      "userId": 121,
-      "name": "Maha2"
-    },
-    {
-      "id": 12,
-      "userId": 888,
-      "name": "Ussdasd"
-    },
-    {
-      "id": 13,
-      "userId": 56456,
-      "name": "sadsad"
+      "id": 1,
+      "userId": 100,
+      "name": "User_100"
     }
   ]
 }

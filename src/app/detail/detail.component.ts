@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Select, Store} from '@ngxs/store';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Select, Store } from '@ngxs/store';
+import { ActivatedRoute } from '@angular/router';
 import { UserState } from './../state/user.state';
-import {AddUser, SetSelectedUser, UpdateUser, GetUsers} from './../actions/user.action';
-import {Observable} from 'rxjs';
-import {User} from './../models/user.model';
+import { Observable } from 'rxjs';
+import { User } from './../models/user.model';
 import { UserService } from './../user.service';
 
 @Component({
@@ -23,7 +22,6 @@ export class DetailComponent implements OnInit {
     this.getUser(id);
     this.selectedUser.subscribe(user => {
       this.userSelected = user;
-      console.log(this.userSelected);
     })
   }
 

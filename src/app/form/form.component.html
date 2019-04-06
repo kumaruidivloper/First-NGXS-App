@@ -18,13 +18,13 @@
                         Title is required.
                     </div>
                 </div>
-                <!-- {{userForm.pristine + '' + userForm.invalid + '' +userForm.controls['name'].valid}} -->
             </div>
             <div class="form-group">
                 <button type="submit"class="btn btn-primary mr-1"
                         [disabled]="userForm.pristine || userForm.invalid">Submit
                 </button>
-                <button class="btn btn-primary" (click)="clearForm()">Clear</button>
+                <button type="button" class="btn btn-primary mr-1" [routerLink]="['/users']">Cancel</button>
+                <button type="button" class="btn btn-primary" [disabled]="isDisable" (click)="clearForm()">Reset</button>
             </div>
         </form>
     </div>

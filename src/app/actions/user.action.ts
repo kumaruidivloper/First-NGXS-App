@@ -29,4 +29,5 @@ export class SetSelectedUser {
 
     constructor(public payload: User) {
     }
+    
 }
