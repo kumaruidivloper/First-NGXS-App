@@ -24,6 +24,11 @@
             <button class="btn btn-primary" (click)="deleteUser(user.id)">Delete</button>
           </td>
         </tr>
+        <tr *ngIf="gridLength.length <= 0">
+          <td colspan="5" class="text-center">
+              No Record Found
+          </td>
+        </tr>
       </tbody>
     </table>
       <button class="btn btn-primary float-right" [routerLink]="['adduser']">Add User</button>

@@ -1,9 +1,3 @@
 {
-  "sampleProducts": [
-    {
-      "id": 1,
-      "userId": 100,
-      "name": "User_100"
-    }
-  ]
+  "sampleProducts": []
 }

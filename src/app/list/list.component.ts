@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { UserState } from './../state/user.state';
 import { Select, Store } from '@ngxs/store';
 import { User } from './../models/user.model'
-import { Observable } from 'rxjs';
+import { Observable, empty } from 'rxjs';
 import { Router } from '@angular/router';
 import { DeleteUser, GetUsers, SetSelectedUser } from './../actions/user.action';
 
@@ -12,12 +12,16 @@ import { DeleteUser, GetUsers, SetSelectedUser } from './../actions/user.action'
     styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
+    public gridLength: object;
     @Select(UserState.getUserList) users: Observable<User[]>;
 
     constructor(private store: Store, private router: Router) {
     }
 
     ngOnInit() {
+        this.users.subscribe(res => {
+            this.gridLength = res;
+        })
         this.store.dispatch(new GetUsers());
     }
 
