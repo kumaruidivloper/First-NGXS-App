@@ -13,7 +13,7 @@ const routes: Routes = [
   // { path: '**', redirectTo: 'welcome' },
   // { path: '', redirectTo: 'welcome', pathMatch: 'full' }
      { path: '', redirectTo: 'welcome', pathMatch: 'full'},
-     { path: 'users', loadChildren: './list/list.module#ListModule' },
+     { path: 'customer', loadChildren: './list/list.module#ListModule' },
 ];
 
 @NgModule({

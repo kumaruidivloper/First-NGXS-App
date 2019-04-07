@@ -70,13 +70,13 @@ export class FormComponent {
         if (this.editUser) {
             this.store.dispatch(new UpdateUser(this.userForm.value, this.userForm.value.id)).subscribe(() => {
                 this.clearForm();
-                this.router.navigate(['users']);
+                this.router.navigate(['customer']);
             });
         } else if(this.userForm.value.userId != null){
             console.log(this.userForm.value.userId)
             this.store.dispatch(new AddUser(this.userForm.value)).subscribe(() => {
                 this.clearForm();
-                this.router.navigate(['users']);
+                this.router.navigate(['customer']);
             });
         }
     }
