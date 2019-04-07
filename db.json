@@ -1,11 +1,6 @@
 {
   "sampleProducts": [
     {
-      "id": 1,
-      "userId": 100,
-      "name": "User_100"
-    },
-    {
       "id": 2,
       "userId": 200,
       "name": "User_200"
@@ -14,6 +9,11 @@
       "id": 3,
       "userId": 300,
       "name": "User_300"
+    },
+    {
+      "id": 4,
+      "userId": 400,
+      "name": "User_400"
     }
   ]
 }
