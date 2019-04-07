@@ -25,7 +25,7 @@
                         [disabled]="userForm.pristine || userForm.invalid">Submit
                 </button>
                 <button type="button" class="btn btn-primary mr-1" [routerLink]="['/customer']">Cancel</button>
-                <button type="button" class="btn btn-danger" [disabled]="isDisable" (click)="clearForm()">Reset</button>
+                <button type="button" class="btn btn-danger" [disabled]="isDisable || userForm.pristine || userForm.invalid" (click)="clearForm()">Reset</button>
             </div>
         </form>
     </div>
