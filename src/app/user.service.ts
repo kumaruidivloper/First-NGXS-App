@@ -9,8 +9,7 @@ import { User } from './models/user.model';
 
 export class UserService {
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   fetchUsers() {
       return this.http.get<User[]>('http://localhost:3000/sampleProducts');

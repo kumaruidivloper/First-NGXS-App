@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: '', component: ListComponent },
     { path: 'user/:id/details', component: DetailComponent },
     { path: 'user/:id/edit', component: FormComponent },
-    { path: 'adduser', component: FormComponent },
+    { path: 'adduser', component: FormComponent }
 ];
 
 @NgModule({

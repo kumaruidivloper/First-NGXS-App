@@ -1,7 +1,7 @@
-import { Component, TemplateRef } from '@angular/core';
+import { Component, TemplateRef, OnInit } from '@angular/core';
 import { UserState } from './../state/user.state';
 import { Select, Store } from '@ngxs/store';
-import { User } from './../models/user.model'
+import { User } from './../models/user.model';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
@@ -12,7 +12,7 @@ import { DeleteUser, GetUsers, SetSelectedUser } from './../actions/user.action'
     templateUrl: './list.component.html',
     styleUrls: ['./list.component.scss']
 })
-export class ListComponent {
+export class ListComponent implements OnInit {
     public gridLength: object;
     public modalRef: BsModalRef;
     public message: string;
@@ -22,7 +22,7 @@ export class ListComponent {
     @Select(UserState.getUserList) users: Observable<User[]>;
 
     constructor(
-        private store: Store, 
+        private store: Store,
         private router: Router,
         private modalService: BsModalService) {
     }
@@ -36,7 +36,8 @@ export class ListComponent {
     ngOnInit() {
         this.users.subscribe(res => {
             this.gridLength = res;
-        })
+            console.log(this.gridLength);
+        });
         this.store.dispatch(new GetUsers());
     }
 
@@ -46,7 +47,7 @@ export class ListComponent {
         this.modalRef.hide();
         this.store.dispatch(new DeleteUser(id));
       }
-     
+
       decline(): void {
         this.message = 'Declined!';
         this.modalRef.hide();
