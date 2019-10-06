@@ -26,3 +26,8 @@ Step2: Open angular.json
 There are many ways to do that. The simpest method is by using the [src/styles.css]file and adding the following code:
 URL: https://www.techiediaries.com/angular-bootstrap-ui/
 @import "~bootstrap/dist/css/bootstrap.css";
+
+## REF
+https://www.daptontechnologies.com/angular-ngxs-crud/
+https://github.com/daptontech/ngxs-crud-app
+https://www.linkedin.com/pulse/angular-ngxs-crud-example-dapton-tech
