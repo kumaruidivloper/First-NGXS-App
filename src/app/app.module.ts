@@ -8,8 +8,9 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UserState } from './state/user.state';
-import { WelcomeComponent } from './welcome/welcome.component';
+import { UserState } from '../app/features/list/+state/user.state';
+import { WelcomeComponent } from './features/welcome/welcome.component';
+import { environment } from './../environments/environment';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
         NgxsModule.forRoot(
           [
             UserState
-          ]
+          ],
+          {developmentMode: !environment.production}
         ),
         NgxsReduxDevtoolsPluginModule.forRoot(),
         NgxsLoggerPluginModule.forRoot(),

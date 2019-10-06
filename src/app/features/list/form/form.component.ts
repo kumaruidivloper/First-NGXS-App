@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserState } from './../state/user.state';
-import { AddUser, UpdateUser } from './../actions/user.action';
+import { UserState } from '../+state/user.state';
+import { AddUser, UpdateUser } from '../+state/actions/user.action';
 import { Observable } from 'rxjs';
 import { User } from './../models/user.model';
-import { UserService } from './../user.service';
+import { UserService } from '../../../user.service';
 
-@Component({
+@Component ({
     selector: 'app-form',
     templateUrl: './form.component.html',
     styleUrls: ['./form.component.scss']

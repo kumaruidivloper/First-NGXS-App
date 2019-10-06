@@ -1,11 +1,11 @@
 import { Component, TemplateRef, OnInit } from '@angular/core';
-import { UserState } from './../state/user.state';
+import { UserState } from '../../features/list/+state/user.state';
 import { Select, Store } from '@ngxs/store';
-import { User } from './../models/user.model';
+import { User } from '../list/models/user.model';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { DeleteUser, GetUsers, SetSelectedUser } from './../actions/user.action';
+import { DeleteUser, GetUsers, SetSelectedUser } from '../../features/list/+state/actions/user.action';
 
 @Component({
     selector: 'app-list',

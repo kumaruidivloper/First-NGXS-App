@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { ActivatedRoute } from '@angular/router';
-import { UserState } from './../state/user.state';
+import { UserState } from '../+state/user.state';
 import { Observable } from 'rxjs';
 import { User } from './../models/user.model';
-import { UserService } from './../user.service';
+import { UserService } from '../../../user.service';
 
-@Component({
+@Component ({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
@@ -22,12 +22,12 @@ export class DetailComponent implements OnInit {
     this.getUser(id);
     this.selectedUser.subscribe(user => {
       this.userSelected = user;
-    })
+    });
   }
 
   getUser(id: number) {
     this.userService.selectedUsers(id).subscribe(selectedUser => {
       this.userSelected = selectedUser;
-    })
+    });
   }
 }

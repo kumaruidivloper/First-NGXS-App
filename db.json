@@ -2,8 +2,23 @@
   "sampleProducts": [
     {
       "id": 1,
-      "userId": 1000,
+      "userId": 100,
       "name": "Kumar"
+    },
+    {
+      "id": 2,
+      "userId": 200,
+      "name": "Krishaan"
+    },
+    {
+      "id": 3,
+      "userId": 300,
+      "name": "Vasu"
+    },
+    {
+      "id": 4,
+      "userId": 400,
+      "name": "Viji"
     }
   ]
 }

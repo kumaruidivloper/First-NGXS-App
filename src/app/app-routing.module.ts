@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { WelcomeComponent } from './welcome/welcome.component';
+import { WelcomeComponent } from './features/welcome/welcome.component';
 
 
 const routes: Routes = [
@@ -13,7 +13,7 @@ const routes: Routes = [
   // { path: '**', redirectTo: 'welcome' },
   // { path: '', redirectTo: 'welcome', pathMatch: 'full' }
      { path: '', redirectTo: 'welcome', pathMatch: 'full'},
-     { path: 'customer', loadChildren: './list/list.module#ListModule' },
+     { path: 'customer', loadChildren: './features/list/list.module#ListModule' },
 ];
 
 @NgModule({
