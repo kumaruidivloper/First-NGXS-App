@@ -37,8 +37,8 @@ export class FormComponent implements OnInit {
             if (user) {
                 this.userForm.patchValue({
                     id: user.id,
-                    userId: user.userId,
-                    name: user.name
+                    userId: user.id,
+                    name: user.title
                 });
                 this.editUser = true;
             } else {

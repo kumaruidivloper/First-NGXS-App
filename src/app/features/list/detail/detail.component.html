@@ -3,11 +3,11 @@
 <div class="col" *ngIf="userSelected">
   <div class="row">
     <label class="col-2">User Id</label>
-    <span class="col-2" >{{userSelected.userId}}</span>
+    <span class="col-2" >{{userSelected.id}}</span>
   </div>
   <div class="row">
-    <label class="col-2">User Name</label>
-    <span class="col-2">{{userSelected.name}}</span>
+    <label class="col-2">User Title</label>
+    <span class="col-2">{{userSelected.title}}</span>
   </div>
   <div class="row">
     <button class="btn btn-primary" type="button" [routerLink]="['/customer']">Cancel</button>

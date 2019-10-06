@@ -1,6 +1,6 @@
 export interface User {
     userId: number;
     id: number;
-    name: string;
+    title: string;
     completed: boolean;
 }

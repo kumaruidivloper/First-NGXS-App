@@ -12,22 +12,22 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   fetchUsers() {
-      return this.http.get<User[]>('http://localhost:3000/sampleProducts');
+      return this.http.get<User[]>('https://jsonplaceholder.typicode.com/todos');
   }
 
   selectedUsers(id: number) {
-    return this.http.get<User[]>(`http://localhost:3000/sampleProducts/${id}`);
+    return this.http.get<User[]>(`https://jsonplaceholder.typicode.com/todos/${id}`);
 }
 
   deleteUser(id: number) {
-      return this.http.delete(`http://localhost:3000/sampleProducts/${id}`);
+      return this.http.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
   }
 
   addUser(payload: User) {
-      return this.http.post<User>('http://localhost:3000/sampleProducts', payload);
+      return this.http.post<User>('https://jsonplaceholder.typicode.com/todos', payload);
   }
 
   updateUser(payload: User, id: number) {
-      return this.http.put<User>(`http://localhost:3000/sampleProducts/${id}`, payload);
+      return this.http.put<User>(`https://jsonplaceholder.typicode.com/todos/${id}`, payload);
   }
 }

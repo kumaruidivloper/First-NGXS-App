@@ -21,8 +21,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let user of users | async">
-          <td>{{ user.userId }}</td>
-          <td>{{ user.name }}</td>
+          <td>{{ user.id }}</td>
+          <td>{{ user.title }}</td>
           <td>
             <button class="btn btn-info" (click)="userDetail(user)" [routerLink]="['user', 'details', user.id]">Detail</button>
           </td>
