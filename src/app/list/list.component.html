@@ -24,10 +24,10 @@
           <td>{{ user.userId }}</td>
           <td>{{ user.name }}</td>
           <td>
-            <button class="btn btn-info" (click)="userDetail(user)" [routerLink]="['user', user.id, 'details']">Detail</button>
+            <button class="btn btn-info" (click)="userDetail(user)" [routerLink]="['user', 'details', user.id]">Detail</button>
           </td>
           <td>
-            <button type="button" class="btn btn-warning" (click)="editUser(user)" [routerLink]="['user', user.id, 'edit']">Update</button>
+            <button type="button" class="btn btn-warning" (click)="editUser(user)" [routerLink]="['user', 'edit', user.id]">Update</button>
           </td>
           <td>
             <button type="button" class="btn btn-danger" (click)="openModal(template,user)">Delete</button>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,17 +13,17 @@ import { UserService } from './../user.service';
     templateUrl: './form.component.html',
     styleUrls: ['./form.component.scss']
 })
-export class FormComponent {
+export class FormComponent implements OnInit {
     @Select(UserState.getSelectedUser) selectedUser: Observable<User>;
     public userForm: FormGroup;
     public editUser = false;
-    public isDisable: boolean = false;
+    public isDisable = false;
 
     constructor(
-        private fb: FormBuilder, 
-        private store: Store, 
+        private fb: FormBuilder,
+        private store: Store,
         private route: ActivatedRoute,
-        private userService: UserService, 
+        private userService: UserService,
         private router: Router) {
         this.createForm();
     }
@@ -48,14 +48,14 @@ export class FormComponent {
         }
     }
 
-    getUser(id:number) {
+    getUser(id: number) {
         this.userService.selectedUsers(id).subscribe(selectedUser => {
             this.userForm.patchValue({
                 // id: selectedUser.id,
                 // userId: selectedUser.userId,
                 // name: selectedUser.name
-            })
-        })
+            });
+        });
     }
 
     createForm() {
@@ -72,8 +72,8 @@ export class FormComponent {
                 this.clearForm();
                 this.router.navigate(['customer']);
             });
-        } else if(this.userForm.value.userId != null){
-            console.log(this.userForm.value.userId)
+        } else if (this.userForm.value.userId != null) {
+            console.log(this.userForm.value.userId);
             this.store.dispatch(new AddUser(this.userForm.value)).subscribe(() => {
                 this.clearForm();
                 this.router.navigate(['customer']);
@@ -82,6 +82,6 @@ export class FormComponent {
     }
 
     clearForm() {
-        this.userForm.reset(); 
+        this.userForm.reset();
     }
 }
